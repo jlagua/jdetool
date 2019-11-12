@@ -1,0 +1,9 @@
+{
+  "name": "jdetool",
+  "version": "1.0.0",
+  "description": "A site helping you to make your winamax NBA jde team",
+  "main": "index.js",
+  "repository": "https://github.com/jlagua/jdetool.git",
+  "author": "jlagua",
+  "license": "MIT"
+}
