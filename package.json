@@ -1,9 +1,29 @@
 {
   "name": "jdetool",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A site helping you to make your winamax NBA jde team",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/jlagua/jdetool.git",
   "author": "jlagua",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/hapi": "^18.4.0",
+    "mongoose": "^5.7.10",
+    "walk-sync": "^2.0.2"
+  },
+  "scripts": {
+    "test-style": "eslint --ignore-path .gitignore lib/",
+    "start": "env $(cat local.env) node lib/index"
+  },
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
 }
