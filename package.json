@@ -9,11 +9,14 @@
   "dependencies": {
     "@hapi/hapi": "^18.4.0",
     "mongoose": "^5.7.10",
+    "nba": "^4.11.0",
+    "node-dev": "^4.0.0",
+    "puppeteer": "^2.0.0",
     "walk-sync": "^2.0.2"
   },
   "scripts": {
     "test-style": "eslint --ignore-path .gitignore lib/",
-    "start": "env $(cat local.env) node lib/index"
+    "start": "env $(cat local.env) node-dev lib/index"
   },
   "engines": {
     "node": ">=8.10.0"
