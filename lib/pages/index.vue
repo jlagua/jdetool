@@ -115,7 +115,7 @@ export default {
         HOU: 'Houston Rockets',
         IND: 'Indiana Pacers',
         LAC: 'Los Angeles Clippers',
-        LAL: 'Los Angeles LAkers',
+        LAL: 'Los Angeles Lakers',
         MEM: 'Memphis Grizzlies',
         MIA: 'Miami Heat',
         MIL: 'Milwaukee Bucks',
