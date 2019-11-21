@@ -58,6 +58,24 @@
                 <input v-model="salaryMaxInput" type="number" class="form-control" id="salaryMaxInput" placeholder="">
               </div>
             </div>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="bannedPlayerSelect">Joueur exclu</label>
+                <select class="form-control" id="bannedPlayerSelect" v-model="bannedPlayer">
+                  <option>Aucun</option>
+                  <option v-for="playerName in playerNames" :key="playerName">{{playerName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="forcedPlayerSelect">Joueur inclus</label>
+                <select class="form-control" id="forcedPlayerSelect" v-model="forcedPlayer">
+                  <option>Aucun</option>
+                  <option v-for="playerName in playerNames" :key="playerName">{{playerName}}</option>
+                </select>
+              </div>
+            </div>
             <button type="button" class="btn-secondary" @click="processTeam">Calculer</button>
           </form>
         </div>
@@ -165,7 +183,10 @@ export default {
         UTA: true,
         WAS: true,
       },
-      salaryMaxInput: 85
+      salaryMaxInput: 85,
+      playerNames: [],
+      bannedPlayer: 'Aucun',
+      forcedPlayer: 'Aucun'
     }
   },
   methods: {
@@ -179,13 +200,18 @@ export default {
     processTeam: async function () {
       const teams = Object.keys(this.teamsCheckboxes).filter((team) => this.teamsCheckboxes[team])
       const salaryMax = this.salaryMaxInput
+      const bannedPlayer = this.bannedPlayer && this.bannedPlayer !== 'Aucun' ? this.bannedPlayer : undefined
+      const forcedPlayer = this.forcedPlayer && this.forcedPlayer !== 'Aucun' ? this.forcedPlayer : undefined
       const response = await axios.post('/api/contests/optimal-team', {
         teams,
-        salaryMax
+        salaryMax,
+        bannedPlayer,
+        forcedPlayer
       })
       this.optimalTeamResult = response.data
     },
     getData: function () {
+      this.playerNames = this.players.map((player) => player.name)
       this.gridData = process(this.players, {take: this.take, skip: this.skip, group: this.group, sort: this.sort, filter: this.filter})
     },
     createAppState: function(dataState) {
